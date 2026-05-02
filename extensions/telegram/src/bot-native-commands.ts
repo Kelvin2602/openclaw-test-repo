@@ -683,13 +683,7 @@ export const registerTelegramNativeCommands = ({
     telegramDeps.syncTelegramMenuCommands ?? syncTelegramMenuCommandsRuntime;
   // Telegram only limits the setMyCommands payload (menu entries).
   // Keep hidden commands callable by registering handlers for the full catalog.
-  syncTelegramMenuCommands({
-    bot,
-    runtime,
-    commandsToRegister,
-    accountId,
-    botIdentity: opts.token,
-  });
+  syncTelegramMenuCommands({ bot, runtime, commandsToRegister, accountId, botIdentity: opts.token, maxTotalChars: 5700, });
 
   const resolveCommandRuntimeContext = async (params: {
     msg: NonNullable<TelegramNativeCommandContext["message"]>;
